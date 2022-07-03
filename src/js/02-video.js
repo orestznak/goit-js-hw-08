@@ -9,21 +9,20 @@ const player = new Player(videoVimeo);
 
 console.log(player);
 
+const localStorageItem = localStorage.getItem(STORAGY_KEY);
 
-const onPlay = function() {
-    player.on('timeupdate', function(){
-        console.log('the time was updated to: ' + player.duration);
-    })
+if(localStorageItem){
+    player.setCurrentTime(localStorage.getItem(STORAGY_KEY));    
+} 
+player.on('timeupdate', throttle(getTime,1000));
 
-    // const currentTimePlayer = player.
+function getTime() {
+    player.getCurrentTime()
+            .then(prom => {
+                console.log(prom);
+                localStorage.setItem(STORAGY_KEY,prom);
+            });
 
-    // localStorage.setItem(STORAGY_KEY, currentTimePlayer);
-
-    // player.setCurrentTime(localStorage.getItem(STORAGY_KEY))
-    // 
-};
-
-player.on('play', onPlay);
-
+}
 
 // throttle(onPlay,250)

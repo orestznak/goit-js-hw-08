@@ -24,7 +24,7 @@ imgGallery.innerHTML = listImages;
 
 imgGallery.addEventListener('click', showModal);
 
-const lightbox = new SimpleLightbox('.gallery a', {captions: true, captionSelector: 'img', captionsData: 'alt', captionDelay: 250});
+new SimpleLightbox('.gallery a', {captions: true, captionSelector: 'img', captionsData: 'alt', captionDelay: 250});
 
 function showModal(event) {
     if (event.target.nodeName !== 'IMG') {
