@@ -31,8 +31,14 @@ function populateData() {
 
 function submitFeedBack(evt) {
     evt.preventDefault();
-
+    const isFormEmpty = feedBackForm.email.value === '' || feedBackForm.message.value === ''
+    
+    if(isFormEmpty){         
+        return;     
+    } 
+    
     feedBackForm.reset();
-    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);;
+   
 }
 
